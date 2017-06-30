@@ -16,10 +16,22 @@ div {
   max-height: 90%;
 }
 .card-bg {
-  background-color: blue;
   max-width: 90%;
   max-height: 90%;
   padding: 5%;
+}
+
+.card-bg:hover > .button-container {
+  display: block;
+}
+
+.button-container {
+  display: none;
+
+}
+
+button {
+    margin-left: 5% auto;
 }
 
 .card-photo img {

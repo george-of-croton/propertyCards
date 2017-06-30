@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
 import './css/skeleton.css';
+import './App.css';
 
 import propertyData from './data/property.json';
 
@@ -13,8 +13,11 @@ class ResultsContainer extends Component {
 			<div className="container-header">
 				<h1> Results </h1>
 			</div>
-				<Card data={this.props.data}></Card>
-				<Card data={this.props.data}></Card>
+			{this.props.data.map((data) => {
+				return (
+					<Card data={data}></Card>
+				)
+			})}
 			</div>
 		)
 	}
@@ -27,8 +30,12 @@ class SavedContainer extends Component {
 			<div className="container-header">
 				<h1> Saved</h1>
 			</div>
-				<Card data={this.props.data}></Card>
-				<Card data={this.props.data}></Card>
+			{this.props.data.map((data) => {
+				return (
+					<Card data={data}></Card>
+				)
+			})}
+
 			</div>
 		)
 	}
@@ -41,10 +48,10 @@ class Container extends Component {
 		return(
 			<div className="container">
 				<div className="six columns">
-					<ResultsContainer data={this.props.data}></ResultsContainer>
+					<ResultsContainer data={this.props.results}></ResultsContainer>
 				</div>
 				<div className="six columns">
-				<SavedContainer data={this.props.data}></SavedContainer>
+				<SavedContainer data={this.props.saved}></SavedContainer>
 				</div>
 			</div>
 		)
@@ -54,13 +61,22 @@ class Container extends Component {
 
 class Card extends Component {
   render() {
+		var divStyle = {
+			backgroundColor: this.props.data.agency.brandingColors.primary
+		}
     return (
-      <div className="card-bg">
+      <div className="card-bg" style={divStyle}>
 	      <div className="card-header">
 					<img src={this.props.data.agency.logo}/>
 	      </div>
 	      <div className="card-photo">
 					<img src={this.props.data.mainImage}/>
+				</div>
+				<div className="row button-container">
+					<div className="offset-by-four four columns">
+						<button type="button">ADD</button>
+					</div>
+
 				</div>
       </div>
     )
@@ -72,13 +88,14 @@ class App extends Component {
 	constructor() {
 		super()
 		this.state = {
-			results: propertyData.results[0]
+			results: propertyData.results,
+			saved: propertyData.saved
 		}
 	}
 
   render() {
     return (
-      <Container data={this.state.results}>
+      <Container results={this.state.results} saved={this.state.saved}>
       </Container>
     );
   }
