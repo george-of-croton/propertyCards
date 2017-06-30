@@ -13,9 +13,9 @@ class ResultsContainer extends Component {
 			<div className="container-header">
 				<h1> Results </h1>
 			</div>
-			{this.props.data.map((data) => {
+			{this.props.results.map((data) => {
 				return (
-					<Card data={data}></Card>
+					<Card data={data} button="ADD"></Card>
 				)
 			})}
 			</div>
@@ -30,9 +30,9 @@ class SavedContainer extends Component {
 			<div className="container-header">
 				<h1> Saved</h1>
 			</div>
-			{this.props.data.map((data) => {
+			{this.props.saved.map((data) => {
 				return (
-					<Card data={data}></Card>
+					<Card data={data} button="REMOVE"></Card>
 				)
 			})}
 
@@ -46,12 +46,12 @@ class SavedContainer extends Component {
 class Container extends Component {
 	render() {
 		return(
-			<div className="container">
+			<div className="container" id="container">
 				<div className="six columns">
-					<ResultsContainer data={this.props.results}></ResultsContainer>
+					<ResultsContainer results={this.props.results}></ResultsContainer>
 				</div>
 				<div className="six columns">
-				<SavedContainer data={this.props.saved}></SavedContainer>
+				<SavedContainer saved={this.props.saved}></SavedContainer>
 				</div>
 			</div>
 		)
@@ -74,7 +74,7 @@ class Card extends Component {
 				</div>
 				<div className="row button-container">
 					<div className="offset-by-four four columns">
-						<button type="button">ADD</button>
+						<button type="button">{this.props.button}</button>
 					</div>
 
 				</div>

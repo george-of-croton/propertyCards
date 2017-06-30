@@ -8,17 +8,23 @@
 }
 
 div {
-  border: 1px solid black;
+  /*border: 1px solid black;*/
 }
 .ResultsContainer {
   padding: 5%;
+  margin-top: 10%;
+  border-radius: 30px;
   max-width: 90%;
   max-height: 90%;
+  background-color: #ededed;
 }
+
 .card-bg {
   max-width: 90%;
   max-height: 90%;
   padding: 5%;
+  border-radius: 10px;
+  margin-bottom: 5%;
 }
 
 .card-bg:hover > .button-container {
@@ -31,7 +37,7 @@ div {
 }
 
 button {
-    margin-left: 5% auto;
+    min-width: 100%;
 }
 
 .card-photo img {
