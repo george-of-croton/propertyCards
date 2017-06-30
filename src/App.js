@@ -67,16 +67,15 @@ class Card extends Component {
     return (
       <div className="card-bg" style={divStyle}>
 	      <div className="card-header">
-					<img src={this.props.data.agency.logo}/>
+					<img src={this.props.data.agency.logo} alt={this.props.data.id}/>
 	      </div>
 	      <div className="card-photo">
-					<img src={this.props.data.mainImage}/>
+					<img src={this.props.data.mainImage} alt={this.props.data.id}/>
 				</div>
 				<div className="row button-container">
 					<div className="offset-by-four four columns">
-						<button type="button">{this.props.button}</button>
+						<button type="button" className={this.props.button}>{this.props.button}</button>
 					</div>
-
 				</div>
       </div>
     )

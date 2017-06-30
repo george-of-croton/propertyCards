@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  height: 100%;
 }
 
 .App-logo {
@@ -15,8 +16,9 @@ div {
   margin-top: 10%;
   border-radius: 30px;
   max-width: 90%;
-  max-height: 90%;
-  background-color: #ededed;
+  max-height: 90%;;
+  min-height: 100%;
+  background: #ededed;
 }
 
 .card-bg {
@@ -31,33 +33,33 @@ div {
   display: block;
 }
 
-.button-container {
-  display: none;
+.ADD {
+  background-color: rgb(68, 157, 68);
+  color: white;
+}
 
+.button-container {
+  margin-top: 5%;
+  display: none;
 }
 
 button {
     min-width: 100%;
+    min-height: 100%;
+}
+
+.card-photo {
+  background-color: white;
+  border-radius: 10px;
+  max-height: 95%;
+  /*background: repeating-linear-gradient(-45deg, white, #ededed 5px, white 5px, #ededed 10px);*/
+
 }
 
 .card-photo img {
-  max-width: 98%;
-  padding: 1%;
-
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  border-radius: 10px;
+  max-width: 97%;
+  margin-top: 1%;
+  padding-left: 1.5%;
+  padding-top: 1%;
 }
