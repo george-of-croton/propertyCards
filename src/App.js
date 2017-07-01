@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-
+import _ from 'lodash';
 import './css/skeleton.css';
 import './App.css';
-
 import propertyData from './data/property.json';
 
 
@@ -13,9 +12,10 @@ class ResultsContainer extends Component {
 			<div className="container-header">
 				<h1> Results </h1>
 			</div>
-			{this.props.results.map((data) => {
+			{this.props.results.map((data, index) => {
+				console.log(index)
 				return (
-					<Card data={data} button="ADD"></Card>
+					<Card test={index} addToSaved={this.props.addToSaved} data={data} button="ADD"></Card>
 				)
 			})}
 			</div>
@@ -30,9 +30,10 @@ class SavedContainer extends Component {
 			<div className="container-header">
 				<h1> Saved</h1>
 			</div>
-			{this.props.saved.map((data) => {
+			{this.props.saved.map((data, index) => {
+				// console.log(index)
 				return (
-					<Card data={data} button="REMOVE"></Card>
+					<Card  data={data} button="REMOVE"></Card>
 				)
 			})}
 
@@ -44,14 +45,48 @@ class SavedContainer extends Component {
 
 
 class Container extends Component {
+	constructor() {
+		super()
+		this.state = {
+			results: propertyData.results,
+			saved: propertyData.saved
+		}
+	}
+
+	addToSaved = (e, index) => {
+			e.preventDefault()
+			this.setState((prevState)=> {
+			var selected = _.pullAt(prevState.results, index)[0]
+			prevState.saved.push(selected)
+			return({
+				results: prevState.results,
+				saved: prevState.saved
+			})
+		} )
+	}
+
+	removeFromSaved = (e, index) => {
+			e.preventDefault()
+			this.setState((prevState)=> {
+			var selected = _.pullAt(prevState.results, index)[0]
+			prevState.saved.push(selected)
+			return({
+				results: prevState.results,
+				saved: prevState.saved
+			})
+		} )
+	}
+
+
+
 	render() {
 		return(
 			<div className="container" id="container">
 				<div className="six columns">
-					<ResultsContainer results={this.props.results}></ResultsContainer>
+					<ResultsContainer addToSaved={this.addToSaved} results={this.state.results}></ResultsContainer>
 				</div>
 				<div className="six columns">
-				<SavedContainer saved={this.props.saved}></SavedContainer>
+				<SavedContainer saved={this.state.saved}></SavedContainer>
 				</div>
 			</div>
 		)
@@ -60,6 +95,14 @@ class Container extends Component {
 
 
 class Card extends Component {
+
+	constructor(props) {
+		super(props)
+		this.state = {
+			index: this.props.test
+		}
+	}
+
   render() {
 		var divStyle = {
 			backgroundColor: this.props.data.agency.brandingColors.primary
@@ -73,8 +116,10 @@ class Card extends Component {
 					<img src={this.props.data.mainImage} alt={this.props.data.id}/>
 				</div>
 				<div className="row button-container">
-					<div className="offset-by-four four columns">
-						<button type="button" className={this.props.button}>{this.props.button}</button>
+					<div className="twelve columns">
+						<button type="button" onClick={(e) => {
+							this.props.addToSaved(e, this.props.test)}
+						} className={this.props.button}>{this.props.button}</button>
 					</div>
 				</div>
       </div>
@@ -84,17 +129,9 @@ class Card extends Component {
 
 class App extends Component {
 
-	constructor() {
-		super()
-		this.state = {
-			results: propertyData.results,
-			saved: propertyData.saved
-		}
-	}
-
   render() {
     return (
-      <Container results={this.state.results} saved={this.state.saved}>
+      <Container>
       </Container>
     );
   }

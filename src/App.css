@@ -34,7 +34,12 @@ div {
 }
 
 .ADD {
-  background-color: rgb(68, 157, 68);
+  background-color: #449d44;
+  color: white;
+}
+
+.REMOVE {
+  background-color: #d64131;
   color: white;
 }
 
@@ -46,13 +51,13 @@ div {
 button {
     min-width: 100%;
     min-height: 100%;
+    border: none;
 }
 
 .card-photo {
   background-color: white;
   border-radius: 10px;
   max-height: 95%;
-  /*background: repeating-linear-gradient(-45deg, white, #ededed 5px, white 5px, #ededed 10px);*/
 
 }
 
