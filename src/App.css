@@ -7,10 +7,18 @@
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
+h5 {
+  margin: 0;
+}
 
 div {
   /*border: 1px solid black;*/
 }
+
+h1 {
+  text-align: center;
+}
+
 .ResultsContainer {
   padding: 5%;
   margin-top: 10%;
@@ -44,7 +52,7 @@ div {
 }
 
 .button-container {
-  margin-top: 5%;
+  margin-top: 0%;
   display: none;
 }
 
@@ -52,6 +60,7 @@ button {
     min-width: 100%;
     min-height: 100%;
     border: none;
+    margin: 0;
 }
 
 .card-photo {
